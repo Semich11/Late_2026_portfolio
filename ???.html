@@ -1,0 +1,1292 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-palette="sapphire">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Christopher Obumneke Chima &middot; Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   COLOR PALETTES & THEME CONFIGURATION
+   Edit colors here. Each palette supports both Light and Dark modes.
+   ========================================================================== */
+
+/* 1. SAPPHIRE */
+:root, [data-palette="sapphire"] {
+  --accent: #1e5bc6;
+  --accent-ink: #ffffff;
+  --accent-tint: #dce7f8;
+  --accent-glow: rgba(30, 91, 198, 0.25);
+}
+:root[data-theme="dark"], [data-palette="sapphire"][data-theme="dark"] {
+  --accent: #6fa3ff;
+  --accent-ink: #0a1630;
+  --accent-tint: #16264a;
+  --accent-glow: rgba(111, 163, 255, 0.25);
+}
+
+/* 2. EMERALD */
+[data-palette="emerald"] {
+  --accent: #0f766e;
+  --accent-ink: #ffffff;
+  --accent-tint: #ccfbf1;
+  --accent-glow: rgba(15, 118, 110, 0.25);
+}
+[data-palette="emerald"][data-theme="dark"] {
+  --accent: #2dd4bf;
+  --accent-ink: #042f2e;
+  --accent-tint: #134e4a;
+  --accent-glow: rgba(45, 212, 191, 0.25);
+}
+
+/* 3. VIOLET */
+[data-palette="violet"] {
+  --accent: #6d28d9;
+  --accent-ink: #ffffff;
+  --accent-tint: #ede9fe;
+  --accent-glow: rgba(109, 40, 217, 0.25);
+}
+[data-palette="violet"][data-theme="dark"] {
+  --accent: #a78bfa;
+  --accent-ink: #2e1065;
+  --accent-tint: #3b0764;
+  --accent-glow: rgba(167, 139, 250, 0.25);
+}
+
+/* 4. AMBER */
+[data-palette="amber"] {
+  --accent: #b45309;
+  --accent-ink: #ffffff;
+  --accent-tint: #fef3c7;
+  --accent-glow: rgba(180, 83, 9, 0.25);
+}
+[data-palette="amber"][data-theme="dark"] {
+  --accent: #fbbf24;
+  --accent-ink: #451a03;
+  --accent-tint: #78350f;
+  --accent-glow: rgba(251, 191, 36, 0.25);
+}
+
+/* 5. CRIMSON */
+[data-palette="crimson"] {
+  --accent: #be123c;
+  --accent-ink: #ffffff;
+  --accent-tint: #ffe4e6;
+  --accent-glow: rgba(190, 18, 60, 0.25);
+}
+[data-palette="crimson"][data-theme="dark"] {
+  --accent: #fb7185;
+  --accent-ink: #4c0519;
+  --accent-tint: #881337;
+  --accent-glow: rgba(251, 113, 133, 0.25);
+}
+
+/* Base Light Tokens */
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-raised: #f1f5f9;
+  --fg: #0f172a;
+  --muted: #475569;
+  --line: #cbd5e1;
+  --card-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06);
+  --card-hover-shadow: 0 20px 32px -12px rgba(15, 23, 42, 0.12);
+  --header-bg: rgba(248, 250, 252, 0.85);
+  --img-filter: none;
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+/* Base Dark Tokens */
+:root[data-theme="dark"] {
+  --bg: #090d16;
+  --surface: #101726;
+  --surface-raised: #182238;
+  --fg: #e2e8f0;
+  --muted: #94a3b8;
+  --line: #1e293b;
+  --card-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+  --card-hover-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.65);
+  --header-bg: rgba(9, 13, 22, 0.82);
+  --img-filter: brightness(0.96) contrast(1.04);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 86px;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.7 var(--font-body);
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  padding-bottom: 80px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.wrap { max-width: 920px; margin: 0 auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* Progress bar */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  z-index: 101;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SMART SCROLL-STOP HEADER
+   ========================================================================== */
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--line);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, border-color 0.3s;
+}
+.header-wrapper.is-scrolling { transform: translateY(-110%); }
+.header-wrapper.is-visible { transform: translateY(0); }
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+.mark { font: 700 1.15rem/1 var(--font-display); letter-spacing: -0.015em; }
+.mark span { color: var(--accent); }
+nav {
+  display: flex;
+  gap: 22px;
+  font: 500 0.82rem/1 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  padding: 8px 0;
+  background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 2px no-repeat;
+  transition: color 0.2s, background-size 0.3s;
+}
+nav a:hover, nav a[aria-current="true"] {
+  color: var(--accent);
+  background-size: 100% 2px;
+}
+
+/* ==========================================================================
+   IN-FLOW THEME ANCHOR & FIXED DOCKED SIDEBAR
+   ========================================================================== */
+.theme-anchor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  border-radius: 999px;
+  box-shadow: var(--card-shadow);
+  margin: 22px 0 0 auto;
+  width: fit-content;
+}
+.palette-label {
+  font: 500 0.76rem/1 var(--font-mono);
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.palette-select {
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  font: 500 0.76rem/1.2 var(--font-mono);
+  padding: 5px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+}
+.mode-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--fg);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font: 500 0.76rem/1 var(--font-mono);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
+}
+.mode-toggle-btn:hover {
+  background: var(--accent-tint);
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Floating Sidebar (Appears when top anchor is scrolled out of view) */
+.theme-sidebar {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%) translateX(120%);
+  z-index: 95;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+.theme-sidebar.is-docked {
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.sidebar-trigger {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--accent);
+  box-shadow: var(--card-hover-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.2s, background-color 0.2s;
+}
+.sidebar-trigger:hover {
+  transform: scale(1.08);
+  background: var(--accent-tint);
+}
+.sidebar-panel {
+  position: absolute;
+  right: 54px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--card-hover-shadow);
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 200px;
+}
+.sidebar-panel.is-open {
+  display: flex;
+  transform: translateY(-50%) scale(1);
+}
+.sidebar-panel-title {
+  font: 700 0.72rem/1 var(--font-mono);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero {
+  padding: 68px 0 54px;
+  display: grid;
+  gap: 26px;
+  position: relative;
+  isolation: isolate;
+}
+.status {
+  font: 400 0.8rem/1.5 var(--font-mono);
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+}
+.status b { color: var(--accent); font-weight: 500; }
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 8px;
+  vertical-align: 0.1em;
+}
+h1 {
+  font: 700 clamp(2.2rem, 5.5vw, 3.8rem)/1.1 var(--font-display);
+  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+h1 em {
+  font-style: normal;
+  color: var(--accent);
+  background: linear-gradient(var(--accent), var(--accent)) 0 94% / 100% 0.08em no-repeat;
+}
+.lede {
+  font-size: 1.15rem;
+  max-width: 62ch;
+  margin: 0;
+  color: var(--fg);
+  line-height: 1.7;
+}
+.lede + .lede {
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+}
+.btn {
+  display: inline-block;
+  font: 500 0.92rem/1 var(--font-body);
+  padding: 14px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid var(--accent);
+}
+.btn.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn.ghost {
+  color: var(--accent);
+  background: transparent;
+}
+.btn.ghost:hover {
+  background: var(--accent-tint);
+}
+
+/* ==========================================================================
+   SECTIONS & PROJECTS
+   ========================================================================== */
+section {
+  padding: 68px 0;
+  border-top: 1px solid var(--line);
+}
+.sec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px 24px;
+  margin-bottom: 34px;
+}
+h2 {
+  font: 700 1.85rem/1.2 var(--font-display);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.sec-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 48ch;
+}
+
+.projects { display: grid; gap: 40px; }
+.proj {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.proj-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 240px);
+}
+.proj-main {
+  padding: 28px;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+.kind {
+  font: 500 0.74rem/1 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+h3 {
+  font: 700 1.45rem/1.2 var(--font-display);
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+.proj-main p { margin: 0; max-width: 58ch; color: var(--fg); }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.chip {
+  font: 500 0.8rem/1 var(--font-mono);
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, transform 0.15s;
+}
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.rail {
+  padding: 28px;
+  border-left: 1px solid var(--line);
+  background: var(--surface-raised);
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  font: 400 0.8rem/1.5 var(--font-mono);
+}
+.rail dt {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+}
+.rail dd { margin: 3px 0 0; overflow-wrap: anywhere; }
+.rail dl { margin: 0; display: grid; gap: 16px; }
+
+/* Browser preview & screenshot banner */
+.proj-preview {
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  position: relative;
+}
+.browser-frame {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.browser-dots { display: flex; gap: 7px; }
+.browser-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--line);
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+.proj-img-wrap {
+  width: 100%;
+  height: clamp(210px, 34vw, 320px);
+  overflow: hidden;
+  position: relative;
+  background: #000;
+}
+.proj-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  filter: var(--img-filter);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+}
+.proj-img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform: translateX(-120%);
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.22) 50%, transparent 62%);
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .proj:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+    box-shadow: var(--card-hover-shadow);
+  }
+  .proj:hover .browser-dots span:nth-child(1) { background: #ff5f56; }
+  .proj:hover .browser-dots span:nth-child(2) { background: #ffbd2e; }
+  .proj:hover .browser-dots span:nth-child(3) { background: #27c93f; }
+  .proj:hover .proj-img-wrap img {
+    transform: scale(1.04);
+    filter: brightness(1.02);
+  }
+  .proj:hover .proj-img-wrap::after {
+    animation: sheen 1.1s ease;
+  }
+}
+
+/* Decisions Foldout */
+details { border-top: 1px solid var(--line); }
+summary {
+  cursor: pointer;
+  padding: 16px 28px;
+  font: 500 0.82rem/1.2 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  transition: color 0.2s;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "+";
+  color: var(--accent);
+  font-size: 1.1rem;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+details[open] summary::after { transform: rotate(45deg); }
+summary:hover { color: var(--accent); }
+.decisions {
+  padding: 6px 28px 28px;
+  display: grid;
+  gap: 16px;
+}
+.decisions div {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 6px 20px;
+}
+.decisions dt {
+  font: 500 0.76rem/1.6 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.decisions dd { margin: 0; }
+.decisions dl { margin: 0; display: grid; gap: 14px; }
+
+/* Architecture diagrams */
+.arch { border-bottom: 1px solid var(--line); background: var(--bg); }
+.arch-bar { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; padding: 10px 24px; background: var(--surface); border-bottom: 1px solid var(--line); font: 500 .68rem/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.arch-bar b { color: var(--accent); font-weight: 500; }
+.arch-body { padding: 20px 24px 22px; display: grid; gap: 6px; }
+.layer { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 14px; align-items: center; }
+.layer-label { font: 500 .66rem/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+.nodes { display: flex; flex-wrap: wrap; gap: 10px; min-width: 0; }
+.node { flex: 1 1 170px; min-width: 0; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; font: 400 .72rem/1.45 var(--font-mono); color: var(--muted); }
+.node b { display: block; color: var(--fg); font-weight: 500; font-size: .78rem; margin-bottom: 2px; }
+.node.hot { background: var(--accent-tint); border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+.flow { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 14px; color: var(--accent); font: 500 .8rem/1 var(--font-mono); }
+.flow span { padding-left: 4px; opacity: .8; }
+.flow i { font-style: normal; }
+.cur { display: inline-block; margin-left: 8px; padding: 3px 7px; border-radius: 99px; background: var(--accent-tint); color: var(--accent); font: 500 .66rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .08em; vertical-align: .15em; }
+
+/* Skills, Practice, Education & Contact */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 30px;
+}
+.skills h3 {
+  font: 500 0.78rem/1 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.skills ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.skills li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.log {
+  font: 400 0.88rem/1.6 var(--font-mono);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 24px;
+  overflow-x: auto;
+}
+.log ol { list-style: none; margin: 0; padding: 0; min-width: 520px; }
+.log li {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.log li:last-child { border-bottom: 0; }
+.log .hash { color: var(--accent); font-weight: 500; }
+
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.edu-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.edu-card h3 { font-size: 1.25rem; margin: 0; }
+.edu-card p { margin: 0; font-size: 0.95rem; }
+.edu-skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.pill {
+  font: 500 0.74rem/1 var(--font-mono);
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--bg);
+}
+
+.contact { display: grid; gap: 18px; }
+.contact p { margin: 0; max-width: 60ch; }
+.copyrow { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.copyrow code {
+  font: 500 0.95rem/1 var(--font-mono);
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 8px;
+  user-select: all;
+  overflow-wrap: anywhere;
+}
+#copy-status { font: 400 0.85rem/1 var(--font-mono); color: var(--accent); min-height: 1.2em; }
+footer {
+  padding-top: 36px;
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+  font: 400 0.78rem/1.6 var(--font-mono);
+  color: var(--muted);
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes draw { from { background-size: 0 0.08em; } to { background-size: 100% 0.08em; } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--accent-glow); } 70%, 100% { box-shadow: 0 0 0 9px transparent; } }
+@keyframes sheen { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+@keyframes pop { from { opacity: 0; transform: translateX(-4px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero > * { animation: rise 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  h1 em { animation: draw 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.45s both; }
+  .dot { animation: pulse 2.4s ease-out infinite; }
+  #copy-status:not(:empty) { animation: pop 0.25s both; }
+}
+
+@media (max-width: 680px) {
+  .proj-top { grid-template-columns: minmax(0, 1fr); }
+  .rail { border-left: 0; border-top: 1px solid var(--line); }
+  .decisions div { grid-template-columns: minmax(0, 1fr); }
+  .proj-main, .rail, .decisions { padding-left: 20px; padding-right: 20px; }
+  summary { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 48px; }
+  .log li { grid-template-columns: 1fr; gap: 4px; }
+  .log ol { min-width: 0; }
+  .theme-anchor-toolbar { width: 100%; justify-content: space-between; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"></div>
+
+<!-- ==========================================================================
+     SMART HEADER: HIDES ON SCROLL, REVEALS WHEN SCROLL STOPS
+     ========================================================================== -->
+<div class="header-wrapper is-visible" id="site-header">
+  <div class="wrap">
+    <header class="bar">
+      <div class="mark">Christopher <span>Chima</span></div>
+      <nav aria-label="Sections">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ==========================================================================
+       [DEV TOOL: THEME CONTROLS & SIDEBAR]
+       To hide from visitors, wrap both elements below in an HTML comment
+  <!-- Top in-flow anchor (leaves view when user scrolls down) -->
+  <div id="top-theme-anchor">
+    <aside class="theme-anchor-toolbar" aria-label="Palette and Theme Settings">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span class="palette-label">Theme:</span>
+        <select class="palette-select palette-picker-input" aria-label="Select Color Theme">
+          <option value="sapphire">Sapphire (Blue)</option>
+          <option value="emerald">Emerald (Mint)</option>
+          <option value="violet">Violet (Purple)</option>
+          <option value="amber">Amber (Bronze)</option>
+          <option value="crimson">Crimson (Rose)</option>
+        </select>
+      </div>
+      <button class="mode-toggle-btn theme-toggle-action" type="button" aria-label="Toggle Bright/Dark Mode">
+        <span class="theme-icon-slot">&starf;</span>
+        <span class="theme-label-slot">Light Mode</span>
+      </button>
+    </aside>
+  </div>
+
+  <!-- Docked Floating Sidebar (glides into view when top anchor is scrolled out) -->
+  <aside class="theme-sidebar" id="docked-theme-sidebar" aria-label="Quick Theme Switcher">
+    <button class="sidebar-trigger" id="sidebar-toggle-btn" type="button" aria-label="Open Theme Settings">
+      &#9881;
+    </button>
+    <div class="sidebar-panel" id="sidebar-panel-drawer">
+      <p class="sidebar-panel-title">Theme Settings</p>
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <span class="palette-label">Palette:</span>
+        <select class="palette-select palette-picker-input" aria-label="Sidebar Color Theme">
+          <option value="sapphire">Sapphire (Blue)</option>
+          <option value="emerald">Emerald (Mint)</option>
+          <option value="violet">Violet (Purple)</option>
+          <option value="amber">Amber (Bronze)</option>
+          <option value="crimson">Crimson (Rose)</option>
+        </select>
+      </div>
+      <button class="mode-toggle-btn theme-toggle-action" type="button" style="width:100%; justify-content:center;">
+        <span class="theme-icon-slot">&starf;</span>
+        <span class="theme-label-slot">Light Mode</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       HERO
+       ========================================================================== -->
+  <main>
+    <div class="hero">
+      <div class="status">
+        <span><i class="dot" aria-hidden="true"></i>IT Administrator at <b>BRADE Group</b></span>
+        <span>Henry Business School, class of 2025</span>
+        <span>Semicolon Africa alumnus</span>
+      </div>
+      <h1>I keep business systems <em>running and secure</em>, and build software that lasts.</h1>
+      <p class="lede">I'm an IT Administrator and full-stack software engineer. I manage enterprise IT infrastructure, defend business software from cyber threats, and educate colleagues across departments to identify vulnerabilities.</p>
+      <p class="lede">I write maintainable code using SOLID principles and design patterns, and I have trained and mentored software learners as a technical instructor.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See the projects</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         EXPERIENCE
+         ========================================================================== -->
+    <section id="experience">
+      <div class="sec-head">
+        <h2>Experience</h2>
+        <p>My current role in enterprise IT &amp; security, and technical instruction.</p>
+      </div>
+      <div class="projects">
+        <article class="proj">
+          <div class="proj-top">
+            <div class="proj-main">
+              <div class="kind">IT Administration &amp; Security</div>
+              <h3>IT Administrator<span class="cur">Current</span></h3>
+              <p>I keep the company's IT equipment running and its software protected from cyber attacks. I also conduct Cyber Threat Awareness sessions across all departments so security operates smoothly alongside business goals.</p>
+            </div>
+            <aside class="rail">
+              <dl>
+                <div><dt>Company</dt><dd>BRADE Group</dd></div>
+                <div><dt>Period</dt><dd>Present</dd></div>
+                <div><dt>Reach</dt><dd>All departments</dd></div>
+              </dl>
+            </aside>
+          </div>
+          <details open>
+            <summary>What I do day to day</summary>
+            <dl class="decisions">
+              <div><dt>Equipment</dt><dd>Maintain network switches, Cisco 2911 voice router, workstations, and inverter battery power backup systems so teams work without downtime.</dd></div>
+              <div><dt>Security</dt><dd>Administer M365 accounts, secure cloud endpoints, and guard business software against malware and phishing threats.</dd></div>
+              <div><dt>Awareness</dt><dd>Plan and deliver organization-wide cybersecurity awareness sessions, translating technical risk into straightforward daily safety habits.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+        <article class="proj">
+          <div class="proj-top">
+            <div class="proj-main">
+              <div class="kind">Volunteer, STEM outreach</div>
+              <h3>STEM Outreach &amp; IT Instructor</h3>
+              <p>Mentored young girls toward careers in technology and engineering, guiding them through hands-on renewable energy and electronics projects.</p>
+            </div>
+            <aside class="rail">
+              <dl>
+                <div><dt>Organisation</dt><dd>W.T.E.C</dd></div>
+                <div><dt>Period</dt><dd>2021 &ndash; 2024</dd></div>
+                <div><dt>Focus</dt><dd>Mentorship &amp; solar energy</dd></div>
+              </dl>
+            </aside>
+          </div>
+          <details>
+            <summary>What I did</summary>
+            <dl class="decisions">
+              <div><dt>Mentorship</dt><dd>Led STEM mentorship initiatives that encouraged young women to pursue engineering and computer science.</dd></div>
+              <div><dt>Hands-on Labs</dt><dd>Trained students in clean energy fundamentals and guided them in assembling solar phone chargers, power banks, and rechargeable lights.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+        <article class="proj">
+          <div class="proj-top">
+            <div class="proj-main">
+              <div class="kind">Software instruction</div>
+              <h3>Lead Software Development Instructor</h3>
+              <p>Led frontend training in HTML, CSS, and JavaScript, mentoring learners as they built responsive websites and developed clean coding practices.</p>
+            </div>
+            <aside class="rail">
+              <dl>
+                <div><dt>Organisation</dt><dd>Learnerscorner</dd></div>
+                <div><dt>Period</dt><dd>2022 &ndash; 2023</dd></div>
+                <div><dt>Focus</dt><dd>Frontend development</dd></div>
+              </dl>
+            </aside>
+          </div>
+          <details>
+            <summary>What I did</summary>
+            <dl class="decisions">
+              <div><dt>Teaching</dt><dd>Delivered structured web development curriculum from foundational syntax to multi-page responsive web applications.</dd></div>
+              <div><dt>Code Review</dt><dd>Reviewed student submissions, conducted debugging walkthroughs, and taught version control with Git.</dd></div>
+            </dl>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROJECTS SECTION
+         ========================================================================== -->
+    <section id="projects">
+      <div class="sec-head">
+        <h2>Projects</h2>
+        <p>Open "Decisions and tradeoffs" on any project to see my engineering thinking.</p>
+      </div>
+      <div class="projects">
+
+        <!-- Project 1: Finance Cap / Learning Cap -->
+        <article class="proj">
+          <div class="proj-preview">
+            <div class="browser-frame">
+              <div class="browser-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="proj-img-wrap">
+              <!-- Provided Learning Cap / Finance Cap Session Screen -->
+              <img src="./Finance Cap_Image.png" alt="Finance Cap interactive learning session modal interface" loading="lazy">
+            </div>
+          </div>
+          <div class="arch">
+            <div class="arch-bar"><span><b>Architecture</b> &middot; Finance Cap</span><span>Next.js App Router</span></div>
+            <div class="arch-body">
+              <div class="layer"><div class="layer-label">Client</div><div class="nodes">
+                <div class="node"><b>Learner App</b>Courses, lessons, quizzes, progress tracking</div>
+                <div class="node"><b>Admin Portal</b>Course &amp; topic authoring dashboard</div></div></div>
+              <div class="flow" aria-hidden="true"><span><i>&darr;</i></span></div>
+              <div class="layer"><div class="layer-label">Gate</div><div class="nodes">
+                <div class="node hot"><b>Clerk Middleware</b>Protects all learner routes except landing page</div></div></div>
+              <div class="flow" aria-hidden="true"><span><i>&darr;</i></span></div>
+              <div class="layer"><div class="layer-label">Server</div><div class="nodes">
+                <div class="node"><b>Server Actions</b>Update student hearts and quiz progress</div>
+                <div class="node"><b>Cached Queries</b>React cache wrapper over courses/topics</div></div></div>
+              <div class="flow" aria-hidden="true"><span><i>&darr;</i></span></div>
+              <div class="layer"><div class="layer-label">Data</div><div class="nodes">
+                <div class="node"><b>Drizzle ORM</b>Strict schema &amp; relationship definitions</div>
+                <div class="node hot"><b>Neon PostgreSQL</b>Serverless cloud database</div></div></div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-main">
+              <div class="kind">Full-stack EdTech product</div>
+              <h3>Finance Cap</h3>
+              <p>A gamified financial literacy platform for children and young learners. Students choose learning paths, complete quiz modules, earn points, and track hearts and streaks.</p>
+              <div class="links">
+                <a class="chip" href="https://finance-cap.vercel.app" target="_blank" rel="noopener">Live site</a>
+                <a class="chip" href="https://github.com/Semich11/finance-cap" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+            <aside class="rail">
+              <dl>
+                <div><dt>Front end</dt><dd>Next.js 15, React 19, TypeScript, Tailwind CSS</dd></div>
+                <div><dt>Back end</dt><dd>Clerk Auth, Drizzle ORM, Neon PostgreSQL, Zustand</dd></div>
+                <div><dt>My role</dt><dd>Architecture, design, build &amp; Vercel deployment</dd></div>
+              </dl>
+            </aside>
+          </div>
+          <details>
+            <summary>Decisions and tradeoffs</summary>
+            <dl class="decisions">
+              <div><dt>Goal</dt><dd>Make financial literacy engaging for kids with bite-sized lessons, animated feedback, and visible milestones.</dd></div>
+              <div><dt>Choice</dt><dd>Separated data queries, server mutations, and client UI into isolated layers so schema updates never break page components.</dd></div>
+              <div><dt>Auth</dt><dd>Centralized access control inside Clerk edge middleware so route protection rules live in a single verified file.</dd></div>
+              <div><dt>Tradeoff</dt><dd>Using server actions minimizes client bundle size but requires careful optimistic state updates in Zustand for instant UI feedback.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+        <!-- Project 2: JSM Headphones -->
+        <article class="proj">
+          <div class="proj-preview">
+            <div class="browser-frame">
+              <div class="browser-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="proj-img-wrap">
+              <!-- Strategic JSM Headphones Storefront Showcase -->
+              <img src="./JSM_cart.png" alt="JSM Headphones e-commerce storefront preview" loading="lazy">
+            </div>
+          </div>
+          <div class="arch">
+            <div class="arch-bar"><span><b>Architecture</b> &middot; JSM Headphones</span><span>Next.js pages</span></div>
+            <div class="arch-body">
+              <div class="layer"><div class="layer-label">Content</div><div class="nodes">
+                <div class="node hot"><b>Sanity CMS</b>Dynamic product and promotional banner schemas</div></div></div>
+              <div class="flow" aria-hidden="true"><span><i>&darr;</i></span></div>
+              <div class="layer"><div class="layer-label">Storefront</div><div class="nodes">
+                <div class="node"><b>Product Pages</b>Data-fetched via Sanity GROQ client</div>
+                <div class="node"><b>Cart Provider</b>React Context for items, quantities, and totals</div></div></div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-main">
+              <div class="kind">Headless storefront</div>
+              <h3>JSM Headphones</h3>
+              <p>A fast, responsive audio gear storefront. Real-time product inventory, image assets, and promotional billboard banners are authored in Sanity CMS and served to Next.js pages.</p>
+              <div class="links">
+                <a class="chip" href="https://ecommerce-nextjs-sanity-one.vercel.app/" target="_blank" rel="noopener">Live site</a>
+                <a class="chip" href="https://github.com/Christopher04grit/ecommerce_next.js_sanity" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+            <aside class="rail">
+              <dl>
+                <div><dt>Stack</dt><dd>Next.js, React, Sanity CMS, CSS Modules</dd></div>
+                <div><dt>Pattern</dt><dd>Provider (React Context) for cart state</dd></div>
+                <div><dt>My role</dt><dd>Design, build &amp; deploy on Vercel</dd></div>
+              </dl>
+            </aside>
+          </div>
+          <details>
+            <summary>Decisions and tradeoffs</summary>
+            <dl class="decisions">
+              <div><dt>Choice</dt><dd>A headless CMS lets marketing content and catalog prices update instantly without triggering a software code deployment.</dd></div>
+              <div><dt>State</dt><dd>Cart state lives in a dedicated context provider rather than drilling props down multiple levels.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ENGINEERING PRACTICE
+         ========================================================================== -->
+    <section id="practice">
+      <div class="sec-head">
+        <h2>Engineering Practice</h2>
+        <p>SOLID principles and architectural patterns in my daily work.</p>
+      </div>
+      <div class="log" role="region" aria-label="Engineering practice" tabindex="0">
+        <ol>
+          <li><span class="hash">Single Resp.</span><span>Finance Cap separates schema definitions, cached queries, server actions, and UI components into independent layers.</span></li>
+          <li><span class="hash">Open/Closed</span><span>Button styles use class-variance-authority variants so visual changes do not alter underlying button logic.</span></li>
+          <li><span class="hash">Provider</span><span>JSM Headphones coordinates shopping cart state through a unified React Context provider.</span></li>
+          <li><span class="hash">Store State</span><span>Finance Cap keeps client UI modal interactions inside a lightweight Zustand store.</span></li>
+          <li><span class="hash">Middleware</span><span>A central Clerk middleware evaluates session tokens before routes render, keeping security rules in one location.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SKILLS
+         ========================================================================== -->
+    <section id="skills">
+      <div class="sec-head">
+        <h2>Technical Skills</h2>
+        <p>Grouped by area of practical application.</p>
+      </div>
+      <div class="skills">
+        <div>
+          <h3>IT &amp; Security</h3>
+          <ul>
+            <li><span>IT Administration</span></li>
+            <li><span>Hardware &amp; Network Support</span></li>
+            <li><span>Cybersecurity &amp; Threat Awareness</span></li>
+            <li><span>M365 &amp; Entra ID Identity</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Languages</h3>
+          <ul>
+            <li><span>TypeScript</span></li>
+            <li><span>JavaScript</span></li>
+            <li><span>Python</span></li>
+            <li><span>SQL</span></li>
+            <li><span>Java</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Frameworks &amp; Web</h3>
+          <ul>
+            <li><span>Next.js &amp; React</span></li>
+            <li><span>Node.js &amp; Express</span></li>
+            <li><span>Tailwind CSS</span></li>
+            <li><span>Drizzle ORM</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Engineering Tools</h3>
+          <ul>
+            <li><span>Git &amp; GitHub</span></li>
+            <li><span>Docker &amp; Linux</span></li>
+            <li><span>PostgreSQL &amp; Neon</span></li>
+            <li><span>Sanity CMS &amp; Clerk</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EDUCATION
+         ========================================================================== -->
+    <section id="education">
+      <div class="sec-head">
+        <h2>Education &amp; Training</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="kind" style="display:flex; justify-content:space-between; color:var(--muted); font:500 .74rem var(--font-mono);">
+            <span>Business School</span><span>Class of 2025</span>
+          </div>
+          <h3>Henry Business School</h3>
+          <p>A business education that pairs with technical architecture, allowing me to translate technical and security requirements into measurable business value.</p>
+        </div>
+        <div class="edu-card">
+          <div class="kind" style="display:flex; justify-content:space-between; color:var(--muted); font:500 .74rem var(--font-mono);">
+            <span>Software Engineering</span><span>Alumnus</span>
+          </div>
+          <h3>Semicolon Africa</h3>
+          <p>Lagos-based software engineering training focused on core computer science foundations, clean code, design patterns, and collaborative development.</p>
+          <div class="edu-skills">
+            <span class="pill">Design Thinking</span>
+            <span class="pill">Data Structures</span>
+            <span class="pill">Team Collaboration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT
+         ========================================================================== -->
+    <section id="contact">
+      <div class="sec-head">
+        <h2>Contact</h2>
+      </div>
+      <div class="contact">
+        <p>Thank you for reviewing my portfolio. I'm glad to walk through any project, discuss architecture, or explore IT administration and software engineering roles.</p>
+        <div class="copyrow">
+          <code id="email-text">chima11christopher@gmail.com</code>
+          <button class="btn ghost" id="copy-btn" type="button">Copy email</button>
+          <span id="copy-status" role="status" aria-live="polite"></span>
+        </div>
+        <p>GitHub: <a href="https://github.com/Semich11" target="_blank" rel="noopener">github.com/Semich11</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Christopher04grit" target="_blank" rel="noopener">github.com/Christopher04grit</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>Christopher Obumneke Chima &middot; Portfolio updated October 2026.</footer>
+</div>
+
+<!-- ==========================================================================
+     INTERACTIVITY & CONTROLLER SCRIPTS
+     ========================================================================== -->
+<script>
+// 1. SMART SCROLL-STOP HEADER
+(function initHeader() {
+  var header = document.getElementById('site-header');
+  var lastY = window.scrollY;
+  var stopTimer = null;
+
+  window.addEventListener('scroll', function () {
+    var curY = window.scrollY;
+    if (curY <= 50) {
+      header.classList.remove('is-scrolling');
+      header.classList.add('is-visible');
+      lastY = curY;
+      return;
+    }
+    header.classList.remove('is-visible');
+    header.classList.add('is-scrolling');
+
+    clearTimeout(stopTimer);
+    stopTimer = setTimeout(function () {
+      header.classList.remove('is-scrolling');
+      header.classList.add('is-visible');
+    }, 150);
+
+    lastY = curY;
+  }, { passive: true });
+})();
+
+// 2. SCROLL OBSERVER FOR THEME SIDEBAR
+(function initSidebarScroll() {
+  var anchor = document.getElementById('top-theme-anchor');
+  var sidebar = document.getElementById('docked-theme-sidebar');
+  var panel = document.getElementById('sidebar-panel-drawer');
+  var toggleBtn = document.getElementById('sidebar-toggle-btn');
+
+  toggleBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    panel.classList.toggle('is-open');
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!sidebar.contains(e.target)) {
+      panel.classList.remove('is-open');
+    }
+  });
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) {
+          sidebar.classList.add('is-docked');
+        } else {
+          sidebar.classList.remove('is-docked');
+          panel.classList.remove('is-open');
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(anchor);
+  } else {
+    // Fallback for older browsers
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 200) {
+        sidebar.classList.add('is-docked');
+      } else {
+        sidebar.classList.remove('is-docked');
+        panel.classList.remove('is-open');
+      }
+    });
+  }
+})();
+
+// 3. SYNCHRONIZED PALETTE & MODE CONTROLLER
+(function initThemeEngine() {
+  var root = document.documentElement;
+  var paletteInputs = document.querySelectorAll('.palette-picker-input');
+  var modeButtons = document.querySelectorAll('.theme-toggle-action');
+
+  function updatePalette(pal) {
+    root.setAttribute('data-palette', pal);
+    paletteInputs.forEach(function(sel) { sel.value = pal; });
+    localStorage.setItem('user-portfolio-palette', pal);
+  }
+
+  function updateMode(mode) {
+    root.setAttribute('data-theme', mode);
+    var isDark = mode === 'dark';
+    document.querySelectorAll('.theme-icon-slot').forEach(function(el) {
+      el.innerHTML = isDark ? '&starf;' : '&star;';
+    });
+    document.querySelectorAll('.theme-label-slot').forEach(function(el) {
+      el.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    });
+    localStorage.setItem('user-portfolio-theme', mode);
+  }
+
+  paletteInputs.forEach(function(input) {
+    input.addEventListener('change', function(e) {
+      updatePalette(e.target.value);
+    });
+  });
+
+  modeButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var curMode = root.getAttribute('data-theme') || 'dark';
+      var nextMode = curMode === 'dark' ? 'light' : 'dark';
+      updateMode(nextMode);
+    });
+  });
+
+  // Load saved preferences or defaults
+  var savedPal = localStorage.getItem('user-portfolio-palette') || 'sapphire';
+  var savedTheme = localStorage.getItem('user-portfolio-theme') || 'dark';
+  updatePalette(savedPal);
+  updateMode(savedTheme);
+})();
+
+// 4. READING PROGRESS BAR
+(function initProgress() {
+  var bar = document.querySelector('.progress');
+  window.addEventListener('scroll', function() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? (window.scrollY / max) : 0;
+    if (bar) bar.style.transform = 'scaleX(' + p + ')';
+  }, { passive: true });
+})();
+
+// 5. COPY EMAIL UTILITY
+(function initCopy() {
+  var btn = document.getElementById('copy-btn');
+  var text = document.getElementById('email-text');
+  var status = document.getElementById('copy-status');
+
+  btn.addEventListener('click', function () {
+    var val = text.textContent.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(val).then(function () {
+        status.textContent = 'Copied to clipboard!';
+        setTimeout(function () { status.textContent = ''; }, 2500);
+      });
+    } else {
+      status.textContent = 'Selected! Press Ctrl+C / Cmd+C';
+      setTimeout(function () { status.textContent = ''; }, 2500);
+    }
+  });
+})();
+</script>
+</body>
+</html>
